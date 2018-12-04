@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">보안알림이</string>
+    <string name="config">환경설정</string>
+    <string name="AlertDesc">KISA 보안 경보단계</string>
+    <string name="DownArrDesc">아래 화살표</string>
+    <string name="helpDesc">도움말</string>
+    <string name="NormalCircle">정상</string>
+    <string name="ConcernCircle">관심</string>
+    <string name="CautionCircle">주의</string>
+    <string name="WarningCircle">경계</string>
+    <string name="SevereCircle">심각</string>
+    <string name="SlideDesc">아래로 끌어당겨 추가 내용을 확인해보세요!</string>
+    <string name="EmergencyNewsTitle">긴급 소식!</string>
+    <string name="SecurityNewsTitle">최근 보안 소식</string>
+    <string name="SecurityNewsTitleRelated">사용하고 있는 앱 보안 소식</string>
+    <string name="Not_Found">아무것도 없습니다.</string>
+</resources>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="generalBackground">#383634</color>
+    <color name="textColor">#FFFFFF</color>
+    <color name="auxTextColor">#878787</color>
+
+    <color name="NormalStatus">#98ca6a</color>
+    <color name="ConcerningStatus">#3f73a3</color>
+    <color name="CautionStatus">#b1941d</color>
+    <color name="WarningStatus">#bc6632</color>
+    <color name="SevereStatus">#9c0e15</color>
+</resources>

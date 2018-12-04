@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Security Checker</string>
+    <string name="config">Config Button</string>
+    <string name="AlertDesc">KISA Security Alert Level</string>
+    <string name="DownArrDesc">Down arrow</string>
+    <string name="helpDesc">Help Icon</string>
+    <string name="NormalCircle">Normal Level</string>
+    <string name="ConcernCircle">Concerning Level</string>
+    <string name="CautionCircle">Caution Level</string>
+    <string name="WarningCircle">Warning Level</string>
+    <string name="SevereCircle">Severe Level</string>
+    <string name="SlideDesc">Slide down to get further information!</string>
+    <string name="EmergencyNewsTitle">Emergency News!</string>
+    <string name="SecurityNewsTitle">Recent Security news</string>
+    <string name="SecurityNewsTitleRelated">Security news about your using apps</string>
+    <string name="Not_Found">Nothing here.</string>
+</resources>
