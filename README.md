@@ -1,8 +1,7 @@
 # SecurityScout
 
 <p align="center">
-    <img src="http://github.com/TCgeneric/SecurityScout/icon.png"> </br>
-    <div>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+    <img src="https://github.com/TCGeneric/SecurityScout/blob/master/icon.png"> </br>
     <b> SecurityScout </b> <br/>
     보안 소식 알리미
 </p>
@@ -31,3 +30,6 @@
 2. 안랩 - https://www.ahnlab.com/kr/site/main.do
 #### 해외
 추가 예정
+
+### 로고 출처
+<div>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
