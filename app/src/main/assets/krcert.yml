@@ -1,0 +1,5 @@
+id: krcert
+maxThreatLevel: 5
+displayStrings: [정상, 관심, 주의, 경계, 심각]
+classNames: ["stateSapn step1", "stateSapn step2", "stateSapn step3", "stateSapn step4", "stateSapn step5"]
+colorIDs: [safe, concerned, caution, warning, severe]

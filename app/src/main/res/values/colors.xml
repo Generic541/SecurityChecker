@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#444444</color>
+    <color name="colorPrimaryDark">#000000</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="textColor">#FFFFFF</color>
+    <color name="dimTextColor">#DDDDDD</color>
+
+    <color name="safe">#80FF00</color>
+    <color name="concerned">#0080C0</color>
+    <color name="caution">#E1E140</color>
+    <color name="warning">#FF8000</color>
+    <color name="severe">#E10000</color>
+</resources>

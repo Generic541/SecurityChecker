@@ -1,0 +1,5 @@
+id: ahnlab
+maxThreatLevel: 4
+displayStrings: [안전, 대비, 주의, 긴급]
+classNames: [warn1, warn2, warn3, warn4]
+colorIDs: [safe, concerned, warning, severe]
