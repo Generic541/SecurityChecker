@@ -16,6 +16,7 @@ import androidx.preference.PreferenceManager
 import com.github.tcgeneric.securityscout.securitythreat.DisplayDataProvider
 import com.github.tcgeneric.securityscout.securitythreat.SecurityThreatInfoProvider
 import com.github.tcgeneric.securityscout.securitythreat.TargetContextProvider
+import java.util.*
 import java.util.concurrent.TimeUnit
 import java.util.concurrent.atomic.AtomicBoolean
 
@@ -40,11 +41,13 @@ class MainActivity : AppCompatActivity() {
 
     private fun reloadAlert(id:String?) {
         val source = findViewById<TextView>(R.id.source)
+        val updated = findViewById<TextView>(R.id.updateDate)
         val graph = findViewById<ProgressBar>(R.id.pieChart)
         val display = findViewById<TextView>(R.id.display)
         val target = TargetContextProvider.map[id]!!
         Thread(Runnable {
             val data = SecurityThreatInfoProvider.getFuture(target.url, target.targetHTML).get(3, TimeUnit.SECONDS)
+            val calendar = Calendar.getInstance(TimeZone.getTimeZone("Asia/Seoul"))
             handler.post {
                 val color = ContextCompat.getColor(this, getId("color", data.colorId))
                 source.text = resources.getString(R.string.source_default_value, target.id)
@@ -52,6 +55,12 @@ class MainActivity : AppCompatActivity() {
                 display.text = data.display
                 graph.progressDrawable.setTint(color)
                 display.setTextColor(color)
+                updated.text = resources.getString(R.string.update_default_value,
+                    calendar.get(Calendar.YEAR),
+                    calendar.get(Calendar.MONTH),
+                    calendar.get(Calendar.DATE),
+                    calendar.get(Calendar.HOUR_OF_DAY),
+                    calendar.get(Calendar.SECOND))
             }
             handler.postDelayed({
                 val anim = ObjectAnimator.ofInt(graph, "progress", 0, data.threatLevel*100)
