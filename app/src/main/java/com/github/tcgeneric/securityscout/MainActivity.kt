@@ -1,11 +1,17 @@
 package com.github.tcgeneric.securityscout
 
+import android.animation.ObjectAnimator
+import android.animation.ValueAnimator
 import android.content.Context
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import android.view.WindowManager
+import android.view.animation.DecelerateInterpolator
+import android.widget.ProgressBar
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.preference.PreferenceManager
 import com.github.tcgeneric.securityscout.securitythreat.DisplayDataProvider
 import com.github.tcgeneric.securityscout.securitythreat.SecurityThreatInfoProvider
@@ -14,6 +20,8 @@ import java.util.concurrent.TimeUnit
 import java.util.concurrent.atomic.AtomicBoolean
 
 class MainActivity : AppCompatActivity() {
+
+    private val handler = Handler()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,10 +40,25 @@ class MainActivity : AppCompatActivity() {
 
     private fun reloadAlert(id:String?) {
         val source = findViewById<TextView>(R.id.source)
+        val graph = findViewById<ProgressBar>(R.id.pieChart)
+        val display = findViewById<TextView>(R.id.display)
         val target = TargetContextProvider.map[id]!!
-        val future = SecurityThreatInfoProvider.getFuture(target.url, target.targetHTML)
-        source.post {
-            source.text = future.get(3, TimeUnit.SECONDS).display
-        }
+        Thread(Runnable {
+            val data = SecurityThreatInfoProvider.getFuture(target.url, target.targetHTML).get(3, TimeUnit.SECONDS)
+            handler.post {
+                val color = ContextCompat.getColor(this, getId("color", data.colorId))
+                source.text = resources.getString(R.string.source_default_value, target.id)
+                graph.max = (data.threatLevelMax -1) * 100
+                display.text = data.display
+                graph.progressDrawable.setTint(color)
+                display.setTextColor(color)
+            }
+            handler.postDelayed({
+                val anim = ObjectAnimator.ofInt(graph, "progress", 0, data.threatLevel*100)
+                anim.duration = 1000L
+                anim.interpolator = DecelerateInterpolator()
+                anim.start()
+            }, 100L)
+        }).start()
     }
 }

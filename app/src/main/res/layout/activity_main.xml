@@ -13,7 +13,7 @@
         android:layout_height="200dp"
         android:indeterminate="false"
         android:max="100"
-        android:progress="45"
+        android:progress="0"
         android:background="@drawable/circle_background"
         android:progressDrawable="@drawable/threat_extent"
         style="?android:attr/progressBarStyleHorizontal"
@@ -28,7 +28,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="@string/update_default_value"
+        android:text="@string/default_value"
         android:textSize="16sp"
         android:textColor="@color/dimTextColor"
         app:layout_constraintEnd_toEndOf="parent"
@@ -40,11 +40,23 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="@string/source_default_value"
+        android:text="@string/default_value"
         android:textSize="32sp"
         android:textStyle="bold"
         android:textColor="@color/textColor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/updateDate" />
+
+    <TextView
+        android:id="@+id/display"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/default_value"
+        android:textColor="@color/textColor"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/pieChart"
+        app:layout_constraintEnd_toEndOf="@+id/pieChart"
+        app:layout_constraintStart_toStartOf="@+id/pieChart"
+        app:layout_constraintTop_toTopOf="@+id/pieChart" />
 </androidx.constraintlayout.widget.ConstraintLayout>
