@@ -3,4 +3,5 @@
     <string name="update_default_value">%1$d/%2$d/%3$d %4$d:%5$d 업데이트됨</string>
     <string name="source_default_value">%1$s 보안 경보단계</string>
     <string name="default_value">데이터 없음</string>
+    <string name="retrieve_error">보안 경보 데이터 획득에 실패했습니다.</string>
 </resources>

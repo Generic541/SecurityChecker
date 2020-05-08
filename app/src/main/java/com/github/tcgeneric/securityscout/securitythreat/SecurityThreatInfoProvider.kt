@@ -3,6 +3,7 @@ package com.github.tcgeneric.securityscout.securitythreat
 import android.util.Log
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
+import java.io.IOException
 import java.net.URI
 import java.util.concurrent.Callable
 import java.util.concurrent.Executors
@@ -19,7 +20,7 @@ class SecurityThreatInfoProvider {
     companion object {
         private val executor = Executors.newSingleThreadExecutor()
 
-        fun getFuture(url:String, targetHTML:String): Future<SecurityThreatInfo> {
+        fun getFuture(url:String, targetHTML:String): Future<SecurityThreatInfo?> {
             return executor.submit(Callable {
                 process(urlToIdentifier(url), getTargetClassName(url, targetHTML))
             })
@@ -33,14 +34,20 @@ class SecurityThreatInfoProvider {
             return domain.split(".")[0]
         }
 
-        private fun getTargetClassName(url:String, targetHTML:String):String {
-            val doc: Document = Jsoup.connect(url).get()
-            val target = doc.select(targetHTML).first()
-            Log.i(this::class.java.name, target.className())
-            return target.className()
+        private fun getTargetClassName(url:String, targetHTML:String):String? {
+            try {
+                val doc: Document = Jsoup.connect(url).get()
+                val target = doc.select(targetHTML).first()
+                return target.className()
+            } catch(e:IOException) {
+                return null
+            }
         }
 
-        private fun process(id:String, clsName:String): SecurityThreatInfo {
+        private fun process(id:String, clsName:String?): SecurityThreatInfo? {
+            if(clsName == null)
+                return null
+
             val data = DisplayDataProvider.map[id]!!
             val threatIdx = data.classNames.indexOf(clsName)
             return SecurityThreatInfo(

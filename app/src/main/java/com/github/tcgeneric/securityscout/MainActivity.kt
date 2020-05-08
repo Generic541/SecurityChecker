@@ -5,12 +5,14 @@ import android.animation.ValueAnimator
 import android.content.Context
 import android.os.Bundle
 import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import android.view.WindowManager
 import android.view.animation.DecelerateInterpolator
 import android.widget.ProgressBar
 import android.widget.TextView
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.preference.PreferenceManager
 import com.github.tcgeneric.securityscout.securitythreat.DisplayDataProvider
@@ -47,6 +49,12 @@ class MainActivity : AppCompatActivity() {
         val target = TargetContextProvider.map[id]!!
         Thread(Runnable {
             val data = SecurityThreatInfoProvider.getFuture(target.url, target.targetHTML).get(3, TimeUnit.SECONDS)
+            if(data == null) {
+                this.runOnUiThread {
+                    Toast.makeText(this, R.string.retrieve_error, Toast.LENGTH_SHORT).show()
+                }
+                return@Runnable
+            }
             val calendar = Calendar.getInstance(TimeZone.getTimeZone("Asia/Seoul"))
             handler.post {
                 val color = ContextCompat.getColor(this, getId("color", data.colorId))
