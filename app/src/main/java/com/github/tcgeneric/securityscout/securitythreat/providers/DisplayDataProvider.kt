@@ -1,4 +1,4 @@
-package com.github.tcgeneric.securityscout.securitythreat
+package com.github.tcgeneric.securityscout.securitythreat.providers
 
 class DisplayDataProvider
 {

@@ -2,11 +2,9 @@ package com.github.tcgeneric.securityscout
 
 import android.app.Application
 import android.content.res.AssetManager
-import android.util.Log
-import com.github.tcgeneric.securityscout.securitythreat.DisplayDataProvider
-import com.github.tcgeneric.securityscout.securitythreat.TargetContextProvider
+import com.github.tcgeneric.securityscout.securitythreat.providers.DisplayDataProvider
+import com.github.tcgeneric.securityscout.securitythreat.providers.TargetContextProvider
 import org.yaml.snakeyaml.Yaml
-import java.io.File
 
 class SecurityScout:Application() {
 
@@ -45,7 +43,7 @@ class SecurityScout:Application() {
         while(line != null) {
             val input = line.split(",")
             val data = TargetContextProvider.TargetContext(input[0], input[1], input[2])
-            TargetContextProvider.map.put(data.id, data)
+            TargetContextProvider.map[data.id] = data
             line = file.readLine()
         }
         file.close()

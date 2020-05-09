@@ -1,6 +1,5 @@
-package com.github.tcgeneric.securityscout.securitythreat
+package com.github.tcgeneric.securityscout.securitythreat.providers
 
-import android.util.Log
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
 import java.io.IOException
@@ -22,7 +21,15 @@ class SecurityThreatInfoProvider {
 
         fun getFuture(url:String, targetHTML:String): Future<SecurityThreatInfo?> {
             return executor.submit(Callable {
-                process(urlToIdentifier(url), getTargetClassName(url, targetHTML))
+                process(
+                    urlToIdentifier(
+                        url
+                    ),
+                    getTargetClassName(
+                        url,
+                        targetHTML
+                    )
+                )
             })
         }
 
@@ -35,12 +42,12 @@ class SecurityThreatInfoProvider {
         }
 
         private fun getTargetClassName(url:String, targetHTML:String):String? {
-            try {
+            return try {
                 val doc: Document = Jsoup.connect(url).get()
                 val target = doc.select(targetHTML).first()
-                return target.className()
+                target.className()
             } catch(e:IOException) {
-                return null
+                null
             }
         }
 
